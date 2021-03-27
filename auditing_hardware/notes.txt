@@ -1,0 +1,42 @@
+1. OS version
+
+cat /etc/redhat-release 
+
+2. Kernel version
+
+uname -r
+uname -mrs
+
+3. Cpu virtual cores 
+
+cat /proc/cpuinfo |grep "cpu cores" | awk -F: '{ num+=$2 } END{ print "cpu cores", num }'
+
+
+4. CPU clock speed 
+
+lscpu | grep MHz
+CPU MHz:               804.901
+CPU max MHz:           3200.0000
+CPU min MHz:           800.0000
+
+
+5. CPU Arch
+
+lscpu | grep "Architecture" | awk '{print $2}'
+6  RAM
+
+cat /proc/meminfo | grep "MemTotal" | awk '{ byte =$2 /1024/1024; print byte " GB" }'
+
+7. NetWorking - Bandwidth
+
+8. NetWorking - OS firewall
+ 
+firewall-cmd --list-all
+
+9. NetWorking - Network firewall
+
+
+10. Disk 
+df -aTH
+
+

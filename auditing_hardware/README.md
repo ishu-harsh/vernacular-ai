@@ -13,3 +13,5 @@ Write a bash script to audit the following hardware spec in [RHEL](https://www.r
 - Networking - OS Firewall (Allowed Ports & Protocols)
 - Networking - Network Firewall (Allowed Ports & Protocols)
 - Disk - Mounted/Unmounted volumes, type, storage
+
+## Solution :

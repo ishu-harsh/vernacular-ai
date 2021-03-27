@@ -14,3 +14,32 @@ audio_0010024.wav 10-02-2020T08:38:16+05:30 12-02-2020T10:18:42+05:30
 audio_0010025.wav 10-02-2020T08:38:50+05:30 12-02-2020T10:18:45+05:30
 ...
 ```
+### Solution 
+
+
+
+Enter the following command in terminal to Run the Script
+
+```shel
+cd managing_disk_space 
+bash managing_disk_space.sh   
+```
+After successfully run ,  
+Check the logs in log file in `/home/ubuntu/logs.txt` 
+ 
+### Script Content :
+
+```
+#!/bin/bash
+OUTPUT="/tmp/output.txt"
+LOGS="/home/ubuntu/logs.txt"
+echo "" > "$LOGS"
+find /home/ubuntu/audios/ -type f -mtime +2 -name "audio*" -print0 | xargs -I {} -0 ls "{}"> "${OUTPUT}"
+while IFS= read -r file
+do
+  	echo "${file}" "$(stat -c "%x" "${file}")" "$(date --iso-8601=seconds)" >>"$LOGS"
+    rm -f "${file}"
+done <"${OUTPUT}"
+rm "${OUTPUT}"
+echo "" > "$LOGS"
+```
