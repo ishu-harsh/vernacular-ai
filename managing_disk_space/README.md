@@ -22,7 +22,7 @@ Enter the following command in terminal to Run the Script
 
 ```shel
 cd managing_disk_space 
-bash managing_disk_space.sh   
+sudo bash managing_disk_space.sh   
 ```
 After successfully run ,  
 Check the logs in log file in `/home/ubuntu/logs.txt` 

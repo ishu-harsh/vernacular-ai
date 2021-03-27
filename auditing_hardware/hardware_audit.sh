@@ -28,3 +28,21 @@ echo "$(tput setaf 2) RAM : $(tput sgr0)"  &&  cat /proc/meminfo | grep "MemTota
 
 echo "$(tput setaf 2) Disk - Mounted/Unmounted volumes, type, storage : $(tput sgr0)"  && df -aTH
 
+
+# Networking - Network Firewall (Allowed Ports & Protocols)
+if [[ `  systemctl  status firewalld.service | grep Active | awk '{print $2}' ` = inactive ]] 
+then
+     echo "$(tput setaf 2) Networking - Network Firewall (Allowed Ports & Protocols) :  $(tput sgr0)" && echo -e "\e[31mFirewalld is Inactive\e[0m"
+else
+    echo "$(tput setaf 2) Networking - Network Firewall (Allowed Ports & Protocols) :  $(tput sgr0)"  && echo "Allowed Ports :$(firewall-cmd --list-ports)" && echo "Allowed Protocols :$(firewall-cmd --list-protocols)"
+fi
+
+
+# Networking - OS Firewall (Allowed Ports & Protocols)
+ echo "$(tput setaf 2) Networking - OS Firewall (Allowed Ports & Protocols) :  $(tput sgr0)"  && ufw status verbose
+
+
+ # Bandwidth
+ echo "$(tput setaf 3) Wait 10 Second For Bandwidth $(tput sgr0)"
+ iperf -c 172.217.174.78 -t 10 -p 80 -f Mbits  -w 40k > /tmp/band.txt
+ echo "$(tput setaf 2) Bandwidth :  $(tput sgr0)"  && cat /tmp/b.txt  | grep -o -P '.{0,6}MBytes/sec{0,6}'

@@ -31,7 +31,8 @@ cat /proc/meminfo | grep "MemTotal" | awk '{ byte =$2 /1024/1024; print byte " G
 
 8. NetWorking - OS firewall
  
-firewall-cmd --list-all
+ list all things 
+firewall-cmd --list-all 
 
 9. NetWorking - Network firewall
 
