@@ -10,5 +10,3 @@ do
 done <"${OUTPUT}"
 rm "${OUTPUT}"
 echo "" > "$LOGS"
-
-

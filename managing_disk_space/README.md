@@ -43,3 +43,13 @@ done <"${OUTPUT}"
 rm "${OUTPUT}"
 echo "" > "$LOGS"
 ```
+
+
+#  Solution Using Single `find` Command
+
+```shell
+find /home/ubuntu/audios/ -type f -mtime +2 -name "file*" -exec ls "{}" > /tmp/output.txt \; -exec rm "{}" \; -name bin  -exec bash `while IFS= read -r file ; do echo "$file" "$(stat -c "%x" "$file")" "$(date --iso-8601=seconds)" >> /home/ubuntu/deleted-files-$(date +%d-%m-%y).log ; done < /tmp/output.txt`  "{}"  \;
+```
+
+
+Note  : Run this command with `bash` shell 

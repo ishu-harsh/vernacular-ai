@@ -16,4 +16,13 @@ $echo $(date --iso-8601=seconds)
 
 
 Change date to old 
-touch -a -m -t 201512180130.09  *  
+touch -a -m -t 201512180130.09  * 
+
+find ... | while read -r file; do
+    echo "look at my $file, my $file is amazing";
+done
+
+find ~ -iname '*.jpg' -exec ls {} \;
+# vs
+find ~ -iname '*.jpg' -exec ls {} +
+
